@@ -1,6 +1,18 @@
-# To start 2 docker containers with mongo & mongo-express, run the following at the docker cli:
+
+# check running containers
+docker ps    
+
+# check running/stopped containers
+docker ps -a 
+
+# start containers in detatched mode
+docker-compose -f mongo.yaml up -d    
 
 
-docker ps                           # check that no containers are currently running
+# To start the node front end...
 
-docker-compose -f mongo.yaml up     # start containers
+node server.js
+
+
+# stop containers in detatched mode
+docker-compose -f mongo.yaml down
