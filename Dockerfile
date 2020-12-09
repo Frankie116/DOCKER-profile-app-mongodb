@@ -1,16 +1,18 @@
 FROM node:13-alpine
 
-# set environment variables if required.  Its better to set variables in the docker-compose file for flexibility.
 ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=password
 
-# create directory inside the container
 RUN mkdir -p /home/app
 
-# copy current folder files from HOST to /home/app on CONTAINER. 
-# multiple RUN commands can exist within Dockerfile.
 COPY ./app /home/app
 
-# execute the entrypoint linux command.  i.e start the app with "node server.js"
-# only one entrypoint CMD can exist within Dockerfile
-CMD ["node", "/home/app/server.js"]
+# set default dir so that next commands executes in /home/app dir
+WORKDIR /home/app
+
+# will execute npm install in /home/app because of WORKDIR
+RUN npm install
+
+# no need for /home/app/server.js because of WORKDIR
+CMD ["node", "server.js"]
+
