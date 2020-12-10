@@ -1,5 +1,5 @@
 ## -----------------------------------------------------------------------------------
-# Project: lab049-docker-mongo
+# Project: lab051a-build-docker-image
 ## Purpose: Creates three interconnected docker containers which make up a sample app.
    Author: Frank Effrim-Botchey
 ## -----------------------------------------------------------------------------------
