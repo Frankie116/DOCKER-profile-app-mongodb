@@ -9,7 +9,7 @@
 - Mongo-express - standard container pulled from dockerhub
 - Custom - custom container built ontop of a node base which provides a simple user profile application. 
 
-The docker image created is used by TF-fargate-cd-files project which spins up 2 fargate clusters hosting redundant loadbalanced versions of this app.
+The docker image created is used by TF-fargate-using-cd-files project which spins up 2 fargate clusters hosting redundant loadbalanced versions of this app.
 
 
 
