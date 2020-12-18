@@ -1,5 +1,5 @@
 ## -----------------------------------------------------------------------------------
-# Project: lab051a-build-docker-image
+# Project: DOCKER-profile-app-mongodb
 ## Purpose: Creates three interconnected docker containers which make up a sample app.
    Author: Frank Effrim-Botchey
 ## -----------------------------------------------------------------------------------
@@ -9,7 +9,7 @@
 - Mongo-express - standard container pulled from dockerhub
 - Custom - custom container built ontop of a node base which provides a simple user profile application. 
 
-The docker image created is used by lab051b-build-teffarform-fargate project which spins up 2 fargate clusters hosting redundant loadbalanced versions of this app.
+The docker image created is used by TF-fargate-cd-files project which spins up 2 fargate clusters hosting redundant loadbalanced versions of this app.
 
 
 
