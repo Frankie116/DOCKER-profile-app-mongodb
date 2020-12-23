@@ -13,6 +13,9 @@ WORKDIR /home/app
 # will execute npm install in /home/app because of WORKDIR
 RUN npm install
 
+#  install bind tools for dns lookups
+RUN apk add --update --no-cache bind-tools
+
 # no need for /home/app/server.js because of WORKDIR
 CMD ["node", "server.js"]
 

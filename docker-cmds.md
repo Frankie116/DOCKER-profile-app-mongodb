@@ -3,7 +3,7 @@
 ## create docker network
 docker network create mongo-network
 
-## start mongodb
+## start mongodb --- CONTAINER NEEDS TO BE NAMED 'mongodb'
 docker run -d \
 -p 27017:27017 \
 -e MONGO_INITDB_ROOT_USERNAME=admin \
@@ -21,6 +21,24 @@ docker run -d \
 --net mongo-network \
 --name mongo-express \
 mongo-express
+
+
+## start my-app
+docker run -d \
+-p 3000:3000 \
+--net mongo-network \
+--name my-app2 \
+396057208705.dkr.ecr.eu-west-2.amazonaws.com/my-app:local3.0
+
+
+
+## start mongo-express
+docker run -d \
+-p 3000:3000 \
+--net mongo-network \
+--name my-app \
+396057208705.dkr.ecr.eu-west-2.amazonaws.com/my-app:docker3.0
+
 
 ## -------------------------------------------------
 
