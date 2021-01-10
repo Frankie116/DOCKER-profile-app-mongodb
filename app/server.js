@@ -41,16 +41,27 @@ app.get('/my-path', (req, res) => {
 });
 
 
-app.get('/my-test0', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@localhost:27017", function (err, res) {
-    if (err) throw err;
+app.get('/my-index3', function (req, res) {
+  res.sendFile('index.html' , { root : __dirname});
+});
 
-    res.send("connected via local")
+app.get('/my-index4', function (req, res) {
+  res.sendFile('index4.html' , { root : __dirname});
+});
+
+
+app.get('/test-1a', (req, res) => {
+  MongoClient.connect(mongoUrlLocal, function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
 
 
-app.get('/my-test9', (req, res) => {
+
+app.get('/test-1b', (req, res) => {
   MongoClient.connect("mongodb://admin:password@localhost:27017", function callback(err) {
     if (err) { throw err;
     } else {
@@ -60,99 +71,59 @@ app.get('/my-test9', (req, res) => {
 });
 
 
-app.get('/my-test1', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@localhost:27017", function(err, db) {
-    test.equal(null, err);
-    test.ok(db != null);
 
-    db.collection("replicaset_mongo_client_collection").update({a:1}, {b:1}, {upsert:true}, function(err, result) {
-      test.equal(null, err);
-      test.equal(1, result);
-
-      db.close();
-      test.done();
-    });
+app.get('/test-2a', (req, res) => {
+  MongoClient.connect(mongoUrlDocker, function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
 
 
-app.get('/my-test2', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@mongodb:27017", function(err, db) {
-    test.equal(null, err);
-    test.ok(db != null);
 
-    db.collection("replicaset_mongo_client_collection").update({a:1}, {b:1}, {upsert:true}, function(err, result) {
-      test.equal(null, err);
-      test.equal(1, result);
-
-      db.close();
-      test.done();
-    });
+app.get('/test-2b', (req, res) => {
+  MongoClient.connect("mongodb://admin:password@mongodb:27017", function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
 
 
-app.get('/my-test3', (req, res) => {
-  MongoClient.connect(mongoUrlLocal, function (err, res) {
-    if (err) throw err;
 
-    res.send("connected via local")
+app.get('/test-3a', (req, res) => {
+  MongoClient.connect("mongodb://my-app.intracom.uk:27017", function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
 
 
-app.get('/my-test4', (req, res) => {
-  MongoClient.connect("my-app.intracom.uk:27017", function (err, res) {
-    if (err) throw err;
 
-    res.send("connected via docker")
+app.get('/test-4a', (req, res) => {
+  MongoClient.connect("mongodb://admin:password@mongodb", function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
 
 
-app.get('/my-test4b', (req, res) => {
-  MongoClient.connect("mongodb://my-app.intracom.uk:27017", function (err, res) {
-    if (err) throw err;
 
-    res.send("connected via docker")
+app.get('/test-5a', (req, res) => {
+  MongoClient.connect("mongodb://admin:password@mongodb:27017/myDb?authSource=admin", function callback(err) {
+    if (err) { throw err;
+    } else {
+      res.send("connected via local")
+    }
   });
 });
-
-
-app.get('/my-test5', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@mongodb", function (err, res) {
-    if (err) throw err;
-
-    res.send("connected via docker")
-  });
-});
-
-app.get('/my-test6', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@mongodb:27017", function (err, res) {
-    if (err) throw err;
-
-    res.send("connected via docker")
-  });
-});
-
-
-app.get('/my-test7', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@mongodb:27017/myDb?authSource=admin", function (err, res) {
-    if (err) throw err;
-
-    res.send("connected via docker")
-  });
-});
-
-
-app.get('/my-test8', (req, res) => {
-  MongoClient.connect("mongodb://admin:password@mongodb:27017/my-db?authSource=admin", function (err, res) {
-    if (err) throw err;
-
-    res.send("connected via docker")
-  });
-});
-
 // ---------------------------------------------------------------------------------------------------------
 
 
