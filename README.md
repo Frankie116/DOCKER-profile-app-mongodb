@@ -1,5 +1,5 @@
 -----------------------------------------------------------------------------------
-# Project: DOCKER-profile-app-mongodb
+## Project: DOCKER-profile-app-mongodb
 
 Purpose: Creates three interconnected docker containers which make up a sample app.
 
